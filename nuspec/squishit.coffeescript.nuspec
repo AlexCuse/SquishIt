@@ -16,6 +16,6 @@
   </metadata>
   <files>
     <file src="..\SquishIt.CoffeeScript\bin\Release\SquishIt.CoffeeScript.dll" target="lib\SquishIt.CoffeeScript.dll" />
-    <file src="..\SquishIt.CoffeeScript\Content\App_Start\SquishItCoffeeScript.cs.pp" target="Content\App_Start\SquishItCoffeeScript.cs.pp" />
+    <file src="..\SquishIt.CoffeeScript\bin\Release\SquishIt.CoffeeScript.pdb" target="lib\SquishIt.CoffeeScript.pdb" />    
   </files>
 </package>
