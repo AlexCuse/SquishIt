@@ -41,7 +41,7 @@ namespace SquishItAspNetMvcTest
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-            Bundle.RegisterScriptPreprocessor(new HoganPreprocessor());
+            //Bundle.RegisterScriptPreprocessor(new HoganPreprocessor());
             Bundle.RegisterScriptPreprocessor(new CoffeeScriptPreprocessor());
 
             //Bundle.RegisterStylePreprocessor(new LessPreprocessor());
