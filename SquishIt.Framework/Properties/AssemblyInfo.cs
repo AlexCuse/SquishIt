@@ -16,9 +16,6 @@ using WebActivator;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// for testing
-[assembly: InternalsVisibleTo("SquishIt.Tests")]
-
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
@@ -37,10 +34,14 @@ using WebActivator;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.9.0.0")]
-[assembly: AssemblyFileVersion("0.9.0.0")]
+[assembly: AssemblyVersion("0.9.3.0")]
+[assembly: AssemblyFileVersion("0.9.3.0")]
+
+// for testing
 [assembly: InternalsVisibleTo("SquishIt.Tests")]
+
+//use .net 2 transparency rules so FilePathMutexProvider doesn't explode
 [assembly: AllowPartiallyTrustedCallers]
-[assembly: SecurityRules(SecurityRuleSet.Level1)]//use .net 2 transparency rules so FilePathMutexProvider doesn't explode
+[assembly: SecurityRules(SecurityRuleSet.Level1)]
 
 [assembly: ApplicationShutdownMethod(typeof(SquishIt.Framework.Bootstrapper), "Shutdown")]
