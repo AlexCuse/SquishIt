@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
+using WebActivator;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -40,3 +41,6 @@ using System.Security;
 [assembly: AssemblyFileVersion("0.9.0.0")]
 [assembly: InternalsVisibleTo("SquishIt.Tests")]
 [assembly: AllowPartiallyTrustedCallers]
+[assembly: SecurityRules(SecurityRuleSet.Level1)]//use .net 2 transparency rules so FilePathMutexProvider doesn't explode
+
+[assembly: ApplicationShutdownMethod(typeof(SquishIt.Framework.Bootstrapper), "Shutdown")]
