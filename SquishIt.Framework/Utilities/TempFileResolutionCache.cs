@@ -3,11 +3,11 @@ using System.IO;
 
 namespace SquishIt.Framework.Utilities
 {
-    public static class TempFileResolutionCache
+    internal static class TempFileResolutionCache
     {
         static Dictionary<string, string> _resolutions = new Dictionary<string, string>();
  
-        public static bool TryGetValue(string key, out string value)
+        internal static bool TryGetValue(string key, out string value)
         {
             if (_resolutions.TryGetValue(key, out value))
             {
@@ -16,12 +16,12 @@ namespace SquishIt.Framework.Utilities
             return false;
         }
 
-        public static void Add(string key, string value)
+        internal static void Add(string key, string value)
         {
             _resolutions.Add(key, value);
         }
 
-        public static void Clear()
+        internal static void Clear()
         {
             foreach (var path in _resolutions.Values)
             {

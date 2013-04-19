@@ -1,4 +1,4 @@
-﻿using SquishIt.Framework.Resolvers;
+﻿using SquishIt.Framework.Utilities;
 
 namespace SquishIt.Framework
 {
@@ -6,7 +6,7 @@ namespace SquishIt.Framework
     {
         public static void Shutdown()
         {
-            EmbeddedResourceResolver.ClearTempFiles();
+            TempFileResolutionCache.Clear();
         }
     }
 }
