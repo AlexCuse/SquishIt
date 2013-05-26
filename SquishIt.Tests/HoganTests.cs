@@ -157,13 +157,24 @@ namespace SquishIt.Tests
         }
 
         [TestCase(typeof(HoganCompiler)), Platform(Include = "Unix, Linux, Mono")]
-        [TestCase(typeof(MsIeHogan.Hogan.HoganCompiler)), Platform(Include = "Unix, Linux, Mono")]
-        public void CompileFailsGracefullyOnMono(Type compilerType)
-        {
-            var compiler = Activator.CreateInstance(compilerType);
-            var method = compilerType.GetMethod("Compile");
-            var exception = Assert.Throws<Exception>(() => method.Invoke(compiler, new[] { "" }));
-            Assert.AreEqual("Hogan not yet supported for mono.", exception.Message);
+		[TestCase(typeof(MsIeHogan.Hogan.HoganCompiler)), Platform(Include = "Unix, Linux, Mono")]
+		public void CompileFailsGracefullyOnMono (Type compilerType)
+		{
+			var compiler = Activator.CreateInstance (compilerType);
+			var method = compilerType.GetMethod ("Compile");
+
+			string message;
+			if (Platform.Mono && Platform.MonoVersion.Major >= 3) 
+			{
+				var exception = Assert.Throws<System.Reflection.TargetInvocationException>(() => method.Invoke (compiler, new[] { "" }));
+				message = exception.InnerException.Message;
+			} 
+			else 
+			{
+				var exception = Assert.Throws<Exception>(() => method.Invoke (compiler, new[] { "" }));
+				message = exception.Message;
+			}
+            Assert.AreEqual("Hogan not yet supported for mono.", message);
         }
     }
 }

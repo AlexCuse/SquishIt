@@ -20,7 +20,7 @@ namespace SquishIt.Framework
         internal static string MakeRelativePathTo (this Uri from, Uri to) 
         {
             var relativePath = from.MakeRelativeUri (to).OriginalString;
-            if (FileSystem.Unix)
+            if (Platform.Unix)
             {
                 const string parentInPath = "../";
                 var relativePathWithoutLeadingParents = relativePath.TrimStart (parentInPath);
