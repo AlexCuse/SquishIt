@@ -26,11 +26,12 @@ namespace SquishIt.Framework
 						if(displayName != null)
 						{
 							var versionString = displayName.Invoke (null, null).ToString ();
-
+							
+							Console.WriteLine("**VERSION=" + versionString);
 							var regex = new Regex(@"[0-9]+\.[0-9]+\.[0-9]+");
 
 							var versionName = regex.Matches (versionString)[0].NextMatch ().Value;
-
+							Console.WriteLine("**VERSIONNAME=" + versionName);
 							monoVersion = new Version(versionName);
 							versionChecked = true;
 						}
