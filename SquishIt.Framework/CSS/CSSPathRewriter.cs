@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using SquishIt.Framework.Utilities;
 
 namespace SquishIt.Framework.CSS
 {
     public class CSSPathRewriter
     {
+        //this version had URI combination issue fixed, at least in these packages: http://www.meebey.net/posts/mono_3.0_preview_debian_ubuntu_packages/
+        static Version monoThreshold = new Version("3.0.0");
+
         public static string RewriteCssPaths(string outputPath, string sourcePath, string css, ICSSAssetsFileHasher cssAssetsFileHasher, bool asImport = false)
         {
             //see http://stackoverflow.com/questions/3692818/uri-makerelativeuri-behavior-on-mono
-            //seems to be fixed in mono 3
-			if (Platform.Mono && Platform.MonoVersion.Major < 3)
+			if (Platform.Mono && Platform.MonoVersion < monoThreshold)
             {
                 outputPath += "/";
             }
