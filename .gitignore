@@ -8,6 +8,7 @@ test-results/
 *.userprefs
 *.dotCover
 *TestResult.xml
+.nuget/
 
 #combined files from AspNetTest
 SquishItAspNetTest/css/combined*
