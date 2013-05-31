@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using SquishIt.Tests.Helpers;
 using SquishIt.Framework;
+using Version = SquishIt.Framework.Version;
 
 namespace SquishIt.Tests
 {
@@ -103,7 +104,7 @@ alert 'I knew it!' if elvis?";
 			var method = compilerType.GetMethod ("Compile");
 
 			string message;
-			if (Platform.Mono && Platform.MonoVersion.Major >= 3) 
+			if (Platform.Mono && Platform.MonoVersion >= new Version("2.10.8")) 
 			{
 				var ex = Assert.Throws<System.Reflection.TargetInvocationException>(() => method.Invoke (compiler, new[] { "" }));
 				message = ex.InnerException.Message;

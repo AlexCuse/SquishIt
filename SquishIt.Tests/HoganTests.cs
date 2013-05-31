@@ -8,6 +8,7 @@ using SquishIt.Hogan;
 using SquishIt.Hogan.Hogan;
 using SquishIt.Tests.Helpers;
 using SquishIt.Tests.Stubs;
+using Version = SquishIt.Framework.Version;
 
 namespace SquishIt.Tests
 {
@@ -164,7 +165,7 @@ namespace SquishIt.Tests
 			var method = compilerType.GetMethod ("Compile");
 
 			string message;
-			if (Platform.Mono && Platform.MonoVersion.Major >= 3) 
+			if (Platform.Mono && Platform.MonoVersion >= new Version("2.10.8")) 
 			{
 				var exception = Assert.Throws<System.Reflection.TargetInvocationException>(() => method.Invoke (compiler, new[] { "" }));
 				message = exception.InnerException.Message;

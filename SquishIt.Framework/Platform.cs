@@ -11,13 +11,13 @@ namespace SquishIt.Framework
             get { return Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX; }
         }
 
-        static bool versionChecked;
-        static Version monoVersion;
+        static bool _monoVersionChecked;
+        static Version _monoVersion;
         public static Version MonoVersion
         {
             get
             {
-                if (!versionChecked)
+                if (!_monoVersionChecked)
                 {
                     var type = Type.GetType("Mono.Runtime");
                     if (type != null)
@@ -31,12 +31,12 @@ namespace SquishIt.Framework
 
                             var versionName = regex.Matches(versionString)[0].Value;
 
-                            monoVersion = new Version(versionName);
-                            versionChecked = true;
+                            _monoVersion = new Version(versionName);
                         }
                     }
+                    _monoVersionChecked = true;
                 }
-                return monoVersion;
+                return _monoVersion;
             }
         }
 
