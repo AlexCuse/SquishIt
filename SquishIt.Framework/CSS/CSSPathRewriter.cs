@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using SquishIt.Framework.Utilities;
 
 namespace SquishIt.Framework.CSS
 {
@@ -11,18 +9,11 @@ namespace SquishIt.Framework.CSS
     {
         public static string RewriteCssPaths(string outputPath, string sourcePath, string css, ICSSAssetsFileHasher cssAssetsFileHasher, bool asImport = false)
         {
-            //see http://stackoverflow.com/questions/3692818/uri-makerelativeuri-behavior-on-mono
-            if (FileSystem.Unix)
-            {
-                outputPath += "/";
-            }
-
-            var sourceDirectory = Path.GetDirectoryName(sourcePath) + "/";
-            var outputUri = new Uri(Path.GetDirectoryName(outputPath) + "/", UriKind.Absolute);
+            var relativePathAdapter = RelativePathAdapter.Between(outputPath, sourcePath);
 
             var relativePaths = FindDistinctRelativePathsIn(css);
 
-            foreach (string relativePath in relativePaths)
+            foreach (var relativePath in relativePaths)
             {
                 var firstIndexOfHashOrQuestionMark = relativePath.IndexOfAny(new[] { '?', '#' });
 
@@ -34,11 +25,7 @@ namespace SquishIt.Framework.CSS
                     ? relativePath.Substring(0, firstIndexOfHashOrQuestionMark)
                     : relativePath;
 
-                var resolvedSourcePathString = Path.Combine(sourceDirectory, capturedRelativePath);
-
-                var resolvedSourcePath = new Uri(resolvedSourcePathString);
-
-                var resolvedOutput = outputUri.MakeRelativePathTo(resolvedSourcePath);
+                var resolvedOutput = relativePathAdapter.Adapt(capturedRelativePath);
 
                 var newRelativePath = asImport ? "squishit://" + resolvedOutput : (resolvedOutput + segmentAfterHashOrQuestionMark);
 
@@ -54,7 +41,7 @@ namespace SquishIt.Framework.CSS
             {
                 var localRelativePathsThatExist = FindDistinctLocalRelativePathsThatExist(css);
 
-                foreach (string localRelativePathThatExist in localRelativePathsThatExist)
+                foreach (var localRelativePathThatExist in localRelativePathsThatExist)
                 {
                     var localRelativePathThatExistWithFileHash = cssAssetsFileHasher.AppendFileHash(outputPath, localRelativePathThatExist);
 

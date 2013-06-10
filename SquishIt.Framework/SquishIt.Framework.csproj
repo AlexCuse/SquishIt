@@ -53,10 +53,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxMin, Version=4.48.4489.28432, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
-    </Reference>
     <Reference Include="EcmaScript.NET">
       <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
     </Reference>
@@ -68,19 +64,19 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-    </Reference>
+    <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Xml.Linq">
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -96,7 +92,11 @@
     <Compile Include="Base\ProcessResult.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="CSS\RelativePathAdapter.cs" />
     <Compile Include="HttpContext.cs" />
+    <Compile Include="Invalidation\DefaultCacheInvalidationStrategy.cs" />
+    <Compile Include="Invalidation\HashAsVirtualDirectoryCacheInvalidationStrategy.cs" />
+    <Compile Include="Invalidation\ICacheInvalidationStrategy.cs" />
     <Compile Include="IProcessResult.cs" />
     <Compile Include="Utilities\CriticalRenderingSection.cs" />
     <Compile Include="Extensions.cs" />
@@ -154,6 +154,7 @@
     <Compile Include="Utilities\FilePathMutexProvider.cs" />
     <Compile Include="Utilities\TempFileResolutionCache.cs" />
     <Compile Include="Utilities\TrustLevel.cs" />
+    <Compile Include="Platform.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="closure-compiler\compiler.jar">
