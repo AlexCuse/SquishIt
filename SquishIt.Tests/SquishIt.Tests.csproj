@@ -80,7 +80,6 @@
     <Compile Include="EmbeddedResourceResolverTest.cs" />
     <Compile Include="HasherTests.cs" />
     <Compile Include="HoganTests.cs" />
-    <Compile Include="NSassTests.cs" />
     <Compile Include="ScriptPreprocessorPipelineTests.cs" />
     <Compile Include="CriticalRenderingSectionTest.cs" />
     <Compile Include="CSSBundleTests.cs" />
@@ -145,10 +144,6 @@
     <ProjectReference Include="..\SquishIt.MsIeHogan\SquishIt.MsIeHogan.csproj">
       <Project>{1776A1BF-5096-4833-9E28-59D9627A6700}</Project>
       <Name>SquishIt.MsIeHogan</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SquishIt.NSass\SquishIt.NSass.csproj">
-      <Project>{8d1ee11a-c71d-453d-b0bc-0a76c20b010e}</Project>
-      <Name>SquishIt.NSass</Name>
     </ProjectReference>
     <ProjectReference Include="..\SquishIt.Sass\SquishIt.Sass.csproj">
       <Project>{EC304F39-5916-45ED-A289-ABEFF1EDD070}</Project>
