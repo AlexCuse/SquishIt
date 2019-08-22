@@ -6,20 +6,20 @@ namespace SquishIt.Framework.Minifiers.CSS
     {
         readonly CssCompressor compressor;
 
-        internal YuiMinifier()
+        public YuiMinifier()
         {
             compressor = new CssCompressor();
         }
 
-        internal YuiMinifier(int columnWidth)
+        public YuiMinifier(int columnWidth)
         {
             compressor = new CssCompressor
             {
-                LineBreakPosition = columnWidth,
+                LineBreakPosition = columnWidth
             };
         }
 
-        internal YuiMinifier(int columnWidth, CompressionType compressionType)
+        public YuiMinifier(int columnWidth, CompressionType compressionType)
         {
             compressor = new CssCompressor
             {
@@ -28,7 +28,7 @@ namespace SquishIt.Framework.Minifiers.CSS
             };
         }
 
-        internal YuiMinifier(int columnWidth, CompressionType compressionType, bool removeComments)
+        public YuiMinifier(int columnWidth, CompressionType compressionType, bool removeComments)
         {
             compressor = new CssCompressor
                              {
