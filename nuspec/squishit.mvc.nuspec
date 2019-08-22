@@ -7,8 +7,8 @@
     <description>
       ASP.NET MVC Extensions for SquishIt
     </description>
-    <projectUrl>https://github.com/jetheredge/SquishIt</projectUrl>
-    <licenseUrl>https://github.com/jetheredge/SquishIt/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/AlexCuse/SquishIt</projectUrl>
+    <licenseUrl>https://github.com/AlexCuse/SquishIt/blob/master/license.txt</licenseUrl>
     <dependencies>
       <dependency id="SquishIt" version="1.0.0" />
     </dependencies>

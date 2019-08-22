@@ -5,8 +5,8 @@
     <version>1.0.0</version>
     <authors>Justin Etheredge, Alex Ullrich</authors>
     <owners>Justin Etheredge, Alex Ullrich</owners>
-    <projectUrl>https://github.com/jetheredge/SquishIt</projectUrl>
-    <licenseUrl>https://github.com/jetheredge/SquishIt/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/AlexCuse/SquishIt</projectUrl>
+    <licenseUrl>https://github.com/AlexCuse/SquishIt/blob/master/license.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Adds Hogan processing capability to SquishIt using Internet Explorer's javascript engine.</description>
     <dependencies>
