@@ -166,6 +166,9 @@ namespace SquishIt.Framework
         /// </summary>
         public string DefaultCssMimeType { get; set; }
 
+        /// <summary>
+        /// Configured platform-specific dependencies
+        /// </summary>
         public IPlatformConfiguration Platform { get; set; }
 
         public Configuration()
@@ -177,18 +180,24 @@ namespace SquishIt.Framework
             DefaultHashKeyName = "r";
             DefaultJsMinifier = new Minifiers.JavaScript.MsMinifier();
             DefaultTempPathProvider = new TempPathProvider();
-            DefaultRetryableFileOpener = new RetryableFileOpener();
-            DefaultHasher = new Hasher(DefaultRetryableFileOpener);
+            DefaultHasher = new SHA1Hasher(DefaultRetryableFileOpener);
         }
 
         private static ISquishItOptions instance;
 
+        /// <summary>
+        /// SquishIt configuration singleton
+        /// </summary>
         public static ISquishItOptions Instance
         {
             get { return (instance = instance ?? new Configuration()); }
             internal set { instance = value; }
         }
 
+        /// <summary>
+        /// Apply configuration changes.
+        /// </summary>
+        /// <param name="configurer">Function to use when modifying underlying configuration.</param>
         public static void Apply(Action<ISquishItOptions> configurer)
         {
             configurer(Instance);
