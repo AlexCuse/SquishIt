@@ -180,6 +180,7 @@ namespace SquishIt.Framework
             DefaultHashKeyName = "r";
             DefaultJsMinifier = new Minifiers.JavaScript.MsMinifier();
             DefaultTempPathProvider = new TempPathProvider();
+            DefaultRetryableFileOpener = new RetryableFileOpener();
             DefaultHasher = new SHA1Hasher(DefaultRetryableFileOpener);
         }
 
