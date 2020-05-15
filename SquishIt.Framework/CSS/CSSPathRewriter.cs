@@ -65,6 +65,9 @@ namespace SquishIt.Framework.CSS
 
         private static string GetWebPath(string outputPath, IPathTranslator pathTranslator)
         {
+            if (string.IsNullOrEmpty(outputPath))
+                return "/";
+
             return "/" + pathTranslator.ResolveFileSystemPathToAppRelative(Path.GetDirectoryName(outputPath)).TrimStart('/') + "/";
         }
 
