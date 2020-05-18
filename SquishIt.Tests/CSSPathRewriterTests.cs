@@ -43,6 +43,38 @@ namespace SquishIt.Tests
             Assert.AreEqual(expected, result);
         }
 
+        [Test(Description = "When RenderRawContent is called, outputPath will be null/empty and should resolve relative to root.  See https://github.com/AlexCuse/SquishIt/pull/23 for related change")]
+        public void CanRewritePathsInCssWhenNoOutputPathProvided()
+        {
+            ICSSAssetsFileHasher cssAssetsFileHasher = null;
+            string css =
+                @"
+                                                        .header {
+                                                                background-image: url(/img/something.jpg);
+                                                        }
+
+                                                        .footer {
+                                                                background-image: url(/img/blah/somethingelse.jpg);
+                                                        }
+                                                    ";
+
+            string sourceFile = TestUtilities.PreparePath(@"C:\somepath\somesubpath\myfile.css");
+
+            string result = CSSPathRewriter.RewriteCssPaths(null, sourceFile, css, cssAssetsFileHasher, pathTranslator: new PathTranslator());
+
+            string expected =
+                @"
+                                                        .header {
+                                                                background-image: url(/img/something.jpg);
+                                                        }
+
+                                                        .footer {
+                                                                background-image: url(/img/blah/somethingelse.jpg);
+                                                        }
+                                                    ";
+            Assert.AreEqual(expected, result);
+        }
+
         [Test]
         public void CanRewritePathsInCssWhenDifferentFoldersAtSameDepth()
         {
